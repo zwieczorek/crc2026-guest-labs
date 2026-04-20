@@ -76,6 +76,7 @@ Użyj resourców azurerm_public_ip oraz azurerm_network_interface
 - Hasło z `variable`
 - `disable_password_authentication = false`
 - Podłącz NIC
+- size Standard_B1ls
 
 ```hcl
   os_disk {
@@ -103,6 +104,15 @@ ssh <user>@<public-ip>
 ```
 
 ✅ Jeśli się zalogujesz – zadanie wykonane poprawnie!
+
+
+### Etap 5+
+
+Zmień sposób logowania na wirtualna maszynę na logowanie po kluczach ssh. W tym celu stwórz resource typu tls_private_key (uwaga, nowy provider: tls). Nastepnie zapisz (w bieżącym katalogu) klucz prywatny i publiczny do plików lokalnych (użyj providera local). Nadaj plikowi który zawiera klucz prywatny odpowiednie uprawnienia "0600" (w terraformie). Nastepnie zaloguj się na wirtualną maszynę poleceniem:
+
+```bash
+ssh <user>@<public_ip> -i ./<nazwa_pliku_z_kluczem_prywatnym>
+```
 
 ### Etap 6
 Po zakończonej pracy usuń resourcy poleceniem
