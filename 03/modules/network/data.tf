@@ -1,3 +1,3 @@
 data "azurerm_resource_group" "default" {
-  name = "rg-crc2026-student-XXX-lab"
+  name = var.rg_name
 }

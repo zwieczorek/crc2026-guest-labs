@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "default" {
-  name                = "vnet-xxx"
+  name                = "vnet-XXX"
   location            = data.azurerm_resource_group.default.location
   resource_group_name = data.azurerm_resource_group.default.name
   address_space       = ["172.24.0.0/16"]
