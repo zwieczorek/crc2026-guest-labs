@@ -2,5 +2,5 @@ locals {
   tags = {
     owner = "name.surname"
   }
-  prefix = "mynamehere" # FIXME
+  prefix = "prefix" # FIXME
 }

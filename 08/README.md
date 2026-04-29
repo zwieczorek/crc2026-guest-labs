@@ -176,7 +176,7 @@ Dodaj następujące zmienne (**Settings → Secrets and variables → Actions �
 ```yaml
 - name: "Terraform Init"
   run: |
-    terraform init \
+    terraform init -input=false -upgrade \
       -backend-config="resource_group_name=${{ vars.BACKEND_RESOURCE_GROUP_NAME }}" \
       -backend-config="storage_account_name=${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}" \
       -backend-config="container_name=${{ vars.BACKEND_CONTAINER_NAME }}" \
@@ -207,16 +207,6 @@ run: terraform plan -destroy -input=false -out=tfplan
 ```
 
 3. **Nazwy jobów** — zmień `Terraform Plan` → `Terraform Destroy Plan`, `Terraform Apply` → `Terraform Destroy Apply`.
-
-4. **Zmienne środowiskowe w kroku Apply** — zostaw tylko zmienne ARM (usuń pozostałe):
-
-```yaml
-env:
-  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-```
 
 ### Zaktualizuj deploy pipeline
 
